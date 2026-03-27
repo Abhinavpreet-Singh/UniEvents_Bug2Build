@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import Event from "../event/page";
+import logoImg from "@/assets/UniEvents Logo Only.png";
 import laptopImg from "@/assets/laptop.png";
 import musicImg from "@/assets/music.png";
 import collegeFestImg from "@/assets/collegefest.png";
@@ -33,12 +34,22 @@ const DashboardPage = () => {
   return (
     <div className="min-h-screen bg-[#EBF4FF] font-sans selection:bg-blue-200">
       {/* Navigation Bar */}
-      <nav className="flex items-center justify-between px-6 py-4 bg-white md:px-16 sticky top-0 z-50 shadow-sm">
+      <nav className="flex items-center justify-between px-6 py-1 bg-white md:px-16 sticky top-0 z-50 shadow-sm">
         {/* LEFT */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-2">
           {/* Logo */}
-          <div className="text-[#4169E1] text-2xl md:text-3xl font-black italic tracking-tighter">
-            UniEvents
+          <div className="flex items-center gap-1 md:gap-2">
+            <div className="relative h-16 w-16 md:h-20 md:w-20">
+              <Image
+                src={logoImg}
+                alt="UniEvents logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="text-[#1425D8] text-2xl md:text-[2.3rem] font-black tracking-tighter">
+              UniEvents
+            </div>
           </div>
         </div>
 
