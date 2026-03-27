@@ -3,12 +3,12 @@
 import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import Event from "../event/page";
-import laptopImg from "@/asserts/laptop.png";
-import musicImg from "@/asserts/music.png";
-import collegeFestImg from "@/asserts/collegefest.png";
-import workshopImg from "@/asserts/workshop.png";
-import artImg from "@/asserts/art.png";
-import meetupsImg from "@/asserts/meetups.png";
+import laptopImg from "@/assets/laptop.png";
+import musicImg from "@/assets/music.png";
+import collegeFestImg from "@/assets/collegefest.png";
+import workshopImg from "@/assets/workshop.png";
+import artImg from "@/assets/art.png";
+import meetupsImg from "@/assets/meetups.png";
 
 interface Category {
   id: string;
