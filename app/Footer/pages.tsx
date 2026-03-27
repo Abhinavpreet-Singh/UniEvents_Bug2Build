@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Sparkles, Phone, Mail } from "lucide-react";
 import { FaInstagramSquare, FaLinkedin } from "react-icons/fa";
 
@@ -22,19 +23,19 @@ const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-3 text-slate-400 font-medium">
               <li>
-                <a href="#" className="hover:text-white transition">
+                <Link href="/" className="hover:text-white transition">
                   Home Page
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <Link href="/event" className="hover:text-white transition">
                   Event Page
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <Link href="/howitwork" className="hover:text-white transition">
                   Steps Page
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -56,14 +57,14 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <Link href="/terms" className="hover:text-white transition">
                   Terms & Conditions
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
+                <Link href="/privacy" className="hover:text-white transition">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
