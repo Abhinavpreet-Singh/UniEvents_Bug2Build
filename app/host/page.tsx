@@ -39,27 +39,11 @@ const HostEvents: React.FC = () => {
               <div className="absolute inset-0 bg-blue-200/30 blur-3xl rounded-[3rem] -z-10" />
 
               {/* Card */}
-              <div className="w-full h-full bg-white rounded-[3.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-white flex items-center justify-center">
+              <div className="w-full h-full shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] rounded-3xl  flex items-center justify-center">
                 {/* Placeholder */}
                 <div className="text-gray-200 flex flex-col items-center">
-                  <svg
-                    width="80"
-                    height="80"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="opacity-50"
-                  >
-                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-                    <circle cx="9" cy="9" r="2" />
-                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-                  </svg>
-                  <p className="mt-4 text-xs uppercase tracking-widest opacity-30 font-bold">
-                    Graphic Placeholder
-                  </p>
+                  <img className="rounded-3xl" src="https://hackathon-platform-2cxc.vercel.app/assets/hackathon_illustration.png" alt="" />
+
                 </div>
               </div>
             </div>
