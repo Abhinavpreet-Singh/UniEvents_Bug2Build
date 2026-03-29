@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         {/* Attribution removed as requested */}
 
         {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 text-center sm:text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-center sm:text-left">
           {/* Quick Links */}
           <div className="space-y-6">
             <h3 className="text-lg font-bold tracking-widest uppercase text-blue-400 flex items-center justify-center sm:justify-start">
@@ -22,18 +22,43 @@ const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-3 text-slate-400 font-medium">
               <li>
-                <a href="#" className="hover:text-white transition">
+                <a href="/" className="hover:text-white transition">
                   Home Page
                 </a>
               </li>
               <li>
-                <a href="#events" className="hover:text-white transition">
+                <a href="/event" className="hover:text-white transition">
                   Event Page
                 </a>
               </li>
               <li>
-                <a href="#how-it-works" className="hover:text-white transition">
+                <a href="/#how-it-works" className="hover:text-white transition">
                   Steps Page
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div className="space-y-6">
+            <h3 className="text-lg font-bold tracking-widest uppercase text-blue-400 flex items-center justify-center sm:justify-start">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Legal
+            </h3>
+            <ul className="space-y-3 text-slate-400 font-medium">
+              <li>
+                <a href="/privacy" className="hover:text-white transition">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="/terms" className="hover:text-white transition">
+                  Terms & Conditions
+                </a>
+              </li>
+              <li>
+                <a href="/refund" className="hover:text-white transition">
+                  Refund & Cancellation
                 </a>
               </li>
             </ul>
@@ -47,11 +72,11 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-slate-400 font-medium">
               <li className="flex items-center justify-center sm:justify-start gap-3">
                 <Phone className="w-4 h-4 text-blue-500" />
-                <span>9245643523</span>
+                <span>6297197002</span>
               </li>
               <li className="flex items-center justify-center sm:justify-start gap-3">
                 <Mail className="w-4 h-4 text-blue-500" />
-                <span>bugxyz.dev@gmail.com</span>
+                <span>contact@unievent.in</span>
               </li>
             </ul>
           </div>
