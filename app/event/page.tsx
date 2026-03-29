@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import { ArrowRight, Calendar, MapPin, Users } from "lucide-react";
+import HorizontalSlider from "../Components/HorizontalSlider";
 
 import Howitwork from "../howitwork/page";
 
@@ -153,8 +154,62 @@ export default function EventsPage() {
     }
   }, [activeFilter]);
 
+  const handlePayment = async (event: EventItem) => {
+    try {
+      const amount = event.price ? parseInt(event.price.replace(/[₹,]/g, "")) : 0;
+      
+      if (amount <= 0 && !event.isFree) {
+        alert("Invalid amount");
+        return;
+      }
+
+      if (event.isFree) {
+        alert("This event is free! Booking successful.");
+        return;
+      }
+
+      const response = await fetch("/api/razorpay/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount }),
+      });
+
+      const order = await response.json();
+
+      if (order.error) {
+        throw new Error(order.error);
+      }
+
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_placeholder",
+        amount: order.amount,
+        currency: order.currency,
+        name: "UniEvents",
+        description: `Booking for ${event.title}`,
+        order_id: order.id,
+        handler: function (response: any) {
+          alert(`Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
+        },
+        prefill: {
+          name: "Test User",
+          email: "test@example.com",
+          contact: "9999999999",
+        },
+        theme: {
+          color: "#2563EB",
+        },
+      };
+
+      const rzp = new (window as any).Razorpay(options);
+      rzp.open();
+    } catch (error: any) {
+      console.error("Payment Error:", error);
+      alert(`Payment failed: ${error.message}`);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#EBF4FF] font-sans selection:bg-blue-200 relative overflow-hidden">
+    <div id="events" className="min-h-screen bg-[#EBF4FF] font-sans selection:bg-blue-200 relative overflow-hidden scroll-mt-24">
       <section className="px-6 md:px-16 pb-24">
         <div className="mb-10 text-center md:text-left">
           <h2 className="text-[40px] md:text-[64px] font-black text-[#0A0A0A] tracking-tight leading-none mb-4">
@@ -172,11 +227,10 @@ export default function EventsPage() {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all border ${
-                activeFilter === filter
+              className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all border ${activeFilter === filter
                   ? "bg-[#2563EB] text-white border-[#2563EB] shadow-md"
                   : "bg-white text-gray-500 border-gray-100 hover:border-blue-200"
-              }`}
+                }`}
             >
               {filter}
             </button>
@@ -185,11 +239,11 @@ export default function EventsPage() {
 
         {/* Event Grid */}
         {/* Event Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <HorizontalSlider>
           {filteredEvents.map((event) => (
             <div
               key={event.id}
-              className="bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all group flex flex-col h-full border border-gray-100/50"
+              className="bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all group flex flex-col h-full border border-gray-100/50 w-[300px] md:w-[380px]"
             >
               {/* Card Header (Real Unsplash image for each event) */}
               <div className="relative h-56 overflow-hidden">
@@ -264,7 +318,10 @@ export default function EventsPage() {
                 <div className="text-2xl font-black text-[#0A0A0A]">
                   {event.price || <span className="text-gray-300">Free</span>}
                 </div>
-                <button className="flex items-center gap-2 text-[#2563EB] font-black text-[15px] bg-[#DDE8FF] px-6 py-3 rounded-full hover:bg-blue-100 transition-all group/btn shadow-sm shadow-blue-100/50">
+                <button 
+                  onClick={() => handlePayment(event)}
+                  className="flex items-center gap-2 text-[#2563EB] font-black text-[15px] bg-[#DDE8FF] px-6 py-3 rounded-full hover:bg-blue-100 transition-all group/btn shadow-sm shadow-blue-100/50"
+                >
                   Book Now
                   <ArrowRight
                     size={18}
@@ -277,13 +334,13 @@ export default function EventsPage() {
           ))}
 
           {filteredEvents.length === 0 && (
-            <div className="col-span-full py-20 text-center">
+            <div className="py-20 text-center w-full">
               <p className="text-gray-400 font-bold text-lg">
                 No events found for this filter.
               </p>
             </div>
           )}
-        </div>
+        </HorizontalSlider>
       </section>
 
       {/* How It Works Section */}

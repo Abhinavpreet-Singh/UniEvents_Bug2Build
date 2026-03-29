@@ -6,7 +6,7 @@ import Host from "../host/page";
 export default function HowItWorks() {
   return (
     <>
-      <section className="bg-[#EDF5FF] py-24 px-6 md:px-16 relative overflow-hidden">
+      <section id="how-it-works" className="bg-[#EDF5FF] py-24 px-6 md:px-16 relative overflow-hidden scroll-mt-24">
         {/* Background Puzzle Decorations */}
         <PuzzleIcon className="absolute top-[13%] left-[16%] text-[#4A7DFF]/20 -rotate-49 w-24 h-24 md:w-28 md:h-28" />
         <PuzzleIcon className="absolute top-[7%] right-[36%] text-[#4A7DFF]/20 rotate-12 w-20 h-20 md:w-24 md:h-24" />

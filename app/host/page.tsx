@@ -27,9 +27,9 @@ const HostEvents: React.FC = () => {
               <span className="text-[#1D458D]">Effortlessly</span>
             </h1>
 
-            <button className="bg-[#1D458D] hover:bg-[#162040] text-white text-lg font-bold px-10 py-4 rounded-xl shadow-lg transition-transform active:scale-95 duration-200">
-              Start Hosting
-            </button>
+            <a href="#events" className="bg-[#1D458D] hover:bg-[#162040] text-white text-lg font-bold px-10 py-4 rounded-xl shadow-lg transition-transform active:scale-95 duration-200 inline-block text-center">
+              Start Searching
+            </a>
           </div>
 
           {/* RIGHT */}
